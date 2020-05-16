@@ -21,10 +21,6 @@ send.addEventListener('click', (ev) => {
         return `<div class="box off"><h2>${value.title}</h2><h3> username : ${value.author.username}</h3></div>`;
       }).join();
       el.innerHTML = html;
-      // const html = () => {
-      //   return `<div class="box off"><h2>${parsedData.title}</h2><h3> username : ${parsedData.author.username}</h3></div>`;
-      // };
-      // el.innerHTML = html;
     });
     console.log('remove:', remover);
   };
