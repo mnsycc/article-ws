@@ -11,7 +11,7 @@ send.addEventListener('click', (ev) => {
     };
     // отправка
     const socket = io();
-    await socket.emit('test', JSON.stringify(article));
+    await socket.emit('test', article);
     console.log('sended:', article);
   };
   b();

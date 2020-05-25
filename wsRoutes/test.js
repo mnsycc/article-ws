@@ -4,7 +4,7 @@ const userController = require('controllers/user');
 
 io.on('connection', (socket) => {
     socket.on('test', async (data, cb) => {
-      const parsedData = await JSON.parse(data);
+      const parsedData = await data;
       console.log('parsedData: ', parsedData);
 
       // USER PART

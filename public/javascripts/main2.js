@@ -1,8 +1,8 @@
 const el = document.querySelector('.article_box');
-const send = document.querySelector('.form-container_btn');
+const send = document.querySelector('.form-container_send');
+const remove = document.querySelector('.form-container_delete');
 
-
-send.addEventListener('click', (ev) => {
+remove.addEventListener('click', (ev) => {
   ev.preventDefault();
   const b = async () => {
     // remover`s form
@@ -13,20 +13,29 @@ send.addEventListener('click', (ev) => {
     };
     // socket emit
     const socket = io();
-    await socket.emit('remove', JSON.stringify(remover), (data) => {
-      const parsedData = JSON.parse(data);
+    await socket.emit('remove', remover);
+    console.log('remove:', remover);
+  };
+  b();
+});
+
+
+send.addEventListener('click', (ev) => {
+  ev.preventDefault();
+  const b = async () => {
+    console.log('show all articles clicked!');
+    const data = '';
+    // socket emit
+    const socket = io();
+    await socket.emit('receiver', data, (cb) => {
+      const parsedData = cb;
       console.log(parsedData);
       // visualization
       const html = parsedData.map((value) => {
         return `<div class="box off"><h2>${value.title}</h2><h3> username : ${value.author.username}</h3></div>`;
       }).join();
       el.innerHTML = html;
-      // const html = () => {
-      //   return `<div class="box off"><h2>${parsedData.title}</h2><h3> username : ${parsedData.author.username}</h3></div>`;
-      // };
-      // el.innerHTML = html;
     });
-    console.log('remove:', remover);
   };
   b();
 });
