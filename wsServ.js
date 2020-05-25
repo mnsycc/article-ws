@@ -22,4 +22,6 @@ module.exports.init = async (server) => {
   require('wsRoutes/test');
   // eslint-disable-next-line global-require
   require('wsRoutes/remove');
+  // eslint-disable-next-line global-require
+  require('wsRoutes/receiver');
 };
